@@ -21,15 +21,15 @@ echo $DH_TOKEN | docker login --username $DH_USER --password-stdin &> /dev/null
 BUILD_TAG="${RAPIDS_VER}-cuda${CUDA_VER}-devel-${LINUX_VER}-py${PYTHON_VER}"
 
 # Setup BUILD_ARGS
-case $RAPIDS_VER in
-  "21.10")
-    UCX_PY_VER="0.22"
+case  in
+  "'21.12' grep -m2 UCX_PY_VER ci/gpuci/run.sh")
+    UCX_PY_VER=""
     ;;
   "21.12")
-    UCX_PY_VER="0.23"
+    UCX_PY_VER="21.12."
     ;;
   *)
-    echo "Unrecognized RAPIDS_VER: ${RAPIDS_VER}"
+    echo "Unrecognized RAPIDS_VER: "
     exit 1
     ;;
 esac
